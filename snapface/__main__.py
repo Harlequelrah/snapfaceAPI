@@ -4,10 +4,10 @@ import uvicorn
 from settings.secret import authentication
 from settings.database import engine
 from snapfaceapi import model
-
+from snapfaceapi.route import app_facesnap
 
 app = FastAPI()
-
+app.include_router(app_facesnap)
 
 model.Base.metadata.create_all(bind=engine)
 
