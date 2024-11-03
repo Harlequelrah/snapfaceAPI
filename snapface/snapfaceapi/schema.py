@@ -9,6 +9,7 @@ class SnapFaceBase(BaseModel):
     description:str=Field(example='Picnic à la plage')
 class SnapFaceCreate(SnapFaceBase):
     imageUrl:str=Field(example='assets/images/archibald_plate.jpg')
+    location:Optional[str]=Field(example='Plage de Munich',default=None)
 
 class SnapFaceUpdate(SnapFaceBase):
     title:Optional[str]=None
@@ -16,6 +17,7 @@ class SnapFaceUpdate(SnapFaceBase):
     imageUrl:Optional[str]=None
     snaps:Optional[int]=None
     createAt:Optional[datetime]=None
+    location:Optional[str]=None
 
 class SnapFace(SnapFaceCreate):
     id:int

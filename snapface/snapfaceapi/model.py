@@ -20,4 +20,5 @@ class SnapFace(Base):
     description = Column(String(200), nullable=False)
     snaps=Column(Integer,default=0)
     imageUrl=Column(String(256))
+    location=Column(String(256),nullable=True)
     createdAt=Column(DateTime,nullable=False,default=func.now())
