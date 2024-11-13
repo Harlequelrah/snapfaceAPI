@@ -10,10 +10,10 @@ app = FastAPI()
 app.include_router(app_facesnap)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200"],  # Origines autorisées
+    allow_origins=["http://localhost:4200"],  
     allow_credentials=True,
-    allow_methods=["*"],  # Permet toutes les méthodes HTTP (GET, POST, etc.)
-    allow_headers=["*"],  # Permet tous les en-têtes
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 model.Base.metadata.create_all(bind=engine)
 

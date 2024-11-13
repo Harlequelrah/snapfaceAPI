@@ -1,5 +1,6 @@
 from sqlalchemy.sql import func
 from fastapi import HTTPException, status, Depends, Response
+from fastapi.responses import JSONResponse
 from .model import SnapFace
 from .schema import SnapFaceCreate,SnapFaceUpdate
 from  settings.database import get_db
@@ -12,7 +13,7 @@ async def create_facesnap(db:Session,snapface_create:SnapFaceCreate):
     db.add(snapface)
     db.commit()
     db.refresh(snapface)
-    return Response(status_code=status.HTTP_200_OK,content='FaceSnape créee avec succès.')
+    return JSONResponse(status_code=status.HTTP_200_OK,content={"message":'FaceSnape créee avec succès.'})
 
 async def get_facesnap(db:Session,snapface_id:int):
     face_snap=db.query(SnapFace).filter(SnapFace.id==snapface_id).first()
@@ -33,7 +34,7 @@ async def delete_facesnap(db:Session,snapface_id:int):
     snapface=await get_facesnap(db,snapface_id)
     db.delete(snapface)
     db.commit()
-    return Response(status_code=status.HTTP_200_OK ,content='FaceSnap supprimée avec succès')
+    return JSONResponse(status_code=status.HTTP_200_OK ,content={"message":'FaceSnap supprimée avec succès'})
 
 async def update_facesnap(db:Session,snapface_id:int,snapface_update:SnapFaceUpdate):
     face_snap= await get_facesnap(db,snapface_id)
