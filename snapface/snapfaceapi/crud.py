@@ -40,4 +40,5 @@ async def update_facesnap(db:Session,snapface_id:int,snapface_update:SnapFaceUpd
     face_snap= await get_facesnap(db,snapface_id)
     update_entity(face_snap,snapface_update)
     db.commit()
+    db.refresh(face_snap)
     return face_snap
