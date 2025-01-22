@@ -5,7 +5,7 @@ from .model import SnapFace
 from .schema import SnapFaceCreate,SnapFaceUpdate
 from  settings.database import get_db
 from sqlalchemy.orm import Session
-from harlequelrah_fastapi.utility.utils import update_entity
+from elrahapi.utility.utils import update_entity
 
 
 async def create_facesnap(db:Session,snapface_create:SnapFaceCreate):
